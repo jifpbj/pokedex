@@ -14,11 +14,11 @@ func TestCleanInput(t *testing.T) {
 			expected: []string{"hello", "world"},
 		},
 		{
-			input: "Charmander Bulbasaur PIKACHU Squirtle",
+			input:    "Charmander Bulbasaur PIKACHU Squirtle",
 			expected: []string{"charmander", "bulbasaur", "pikachu", "squirtle"},
 		},
 		{
-			input: " \n  MESSED UP    voLtROn392 \n ",
+			input:    " \n  MESSED UP    voLtROn392 \n ",
 			expected: []string{"messed", "up", "voltron392"},
 		},
 	}
@@ -29,7 +29,7 @@ func TestCleanInput(t *testing.T) {
 			continue
 		}
 
-		for i:= range actual {
+		for i := range actual {
 			word := actual[i]
 			expectedWord := c.expected[i]
 			if word != expectedWord {
@@ -37,3 +37,4 @@ func TestCleanInput(t *testing.T) {
 			}
 		}
 	}
+}
