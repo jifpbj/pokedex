@@ -8,6 +8,7 @@
 *.so
 *.dylib
 
+pokedex
 *repl.log
 # Test binary, built with `go test -c`
 *.test
