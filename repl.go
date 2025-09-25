@@ -8,8 +8,6 @@ import (
 )
 
 func startRepl() {
-
-
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		fmt.Print("Pokedex > ")
@@ -43,25 +41,31 @@ func cleanInput(text string) []string {
 }
 
 type cliCommand struct {
-	name 				string
+	name        string
 	description string
-	callback 		func() error
+	callback    func() error
 }
 
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"exit": {
-			name: 				"exit",
-			description: 	"Exit the Pokedex",
-			callback: 		commandExit,
+			name:        "exit",
+			description: "Exit the Pokedex",
+			callback:    commandExit,
 		},
 		"help": {
-			name: 				"help",
-			description: 	"Show the help message",
-			callback: 		commandHelp,
+			name:        "help",
+			description: "Show the help message",
+			callback:    commandHelp,
+		},
+		"map": {
+			name:        "map",
+			description: "Show the help message",
+			callback:    commandMap,
 		},
 	}
 }
+
 func commandExit() error {
 	fmt.Println("Closing the Pokedex... Goodbye!")
 	os.Exit(0)
@@ -78,5 +82,3 @@ exit: Exit the Pokedex
 `)
 	return nil
 }
-
-
