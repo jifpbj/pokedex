@@ -7,9 +7,12 @@ import (
 )
 
 func commandCatch(cfg *config, args ...string) error {
+	if len(args) != 1 {
+		fmt.Println("Must provide pokemon name!")
+	}
 	pokemonName := args[0]
 	fmt.Printf("Throwing a Pokeball at %s...\n", pokemonName)
-	val, ok := cfg.pokedex[pokemonName]
+	val, ok := cfg.caughtPokemon[pokemonName]
 	if ok {
 		println("You already caught", val.Name, "!")
 		return nil
@@ -27,7 +30,7 @@ func commandCatch(cfg *config, args ...string) error {
 
 			msg := fmt.Sprintf("You caught %s!", pokemon.Name)
 			fmt.Println(msg)
-			cfg.pokedex[pokemon.Name] = pokemon
+			cfg.caughtPokemon[pokemon.Name] = pokemon
 		} else {
 			fmt.Println("Player chance:", playerChance)
 			fmt.Println("Pokemon chance:", pokemonChance)
